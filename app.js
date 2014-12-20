@@ -28,11 +28,11 @@ var events = require('./sockets/events');
 app.get('/trigger/:event/:param?', function(req, res) {
   var param = req.params.param || "red";
   if(req.params.param == undefined) {
-    events[req.params.event](param);
+    events[req.params.event](param, ".color");
     res.send(req.params.event + " triggered");
     dtrig('Triggered ' + req.params.event);
   } else {
-    events[req.params.event](param);
+    events[req.params.event](param, ".color");
     res.send(req.params.event + " triggered with params: " + req.params.param);
     dtrig('Triggered ' + req.params.event + ' with param: ' + req.params.param);
   }
@@ -41,12 +41,12 @@ app.get('/trigger/:event/:param?', function(req, res) {
 app.get('/reset/:event', function(req, res) {
   var param = req.params.param || "black";
   if(req.params.param == undefined) {
-    events["rs"+req.params.event](param);
+    events["rs"+req.params.event](param, ".color");
     res.send(req.params.event + " triggered");
     dtrig('Reset ' + req.params.event);
   } else {
     var param = req.params.param || "red";
-    events["rs"+req.params.event](param);
+    events["rs"+req.params.event](param, ".color");
     res.send(req.params.event + " triggered with params: " + req.params.param);
     dtrig('Reset ' + req.params.event + ' with param: ' + req.params.param);
   }

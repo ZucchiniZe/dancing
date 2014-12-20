@@ -7,11 +7,15 @@
 <script>
   var socket = io('http://localhost');
   socket.on('change color', function (data) {
-    $('.color').css('color', data.color);
+    $("body").trigger('colorChange', ['.color', data.color])
     console.log(data);
   });
   socket.on('change color back', function(data) {
-    $('.color').css('color', data.color);
+    $("body").trigger('colorChange', [data.selector, data.color])
     console.log(data);
+  });
+  $("body").on("colorChange", function(event, param1, param2) {
+    $(param1).css('color', param2);
+    console.log(param1,param2)
   });
 </script>
