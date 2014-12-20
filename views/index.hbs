@@ -1,0 +1,16 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<div class="color">HI IM A COLOR</div>
+
+<script>
+  var socket = io('http://localhost');
+  socket.on('change color', function (data) {
+    $('.color').css('color', data.color);
+    console.log(data);
+  });
+  socket.on('change color back', function(data) {
+    $('.color').css('color', data.color);
+    console.log(data);
+  });
+</script>

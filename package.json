@@ -1,0 +1,15 @@
+{
+  "name": "socket",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "debug": "~2.0.0",
+    "express": "~4.9.0",
+    "hbs": "~2.7.0",
+    "less-middleware": "1.0.x",
+    "socket.io": "^1.2.1"
+  }
+}
