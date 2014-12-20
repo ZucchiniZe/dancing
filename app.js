@@ -29,25 +29,25 @@ app.get('/trigger/:event/:param?', function(req, res) {
   var param = req.params.param || "red";
   if(req.params.param == undefined) {
     events[req.params.event](param, ".color");
-    res.send(req.params.event + " eventgered");
+    res.send(req.params.event + " triggered");
     devent('Triggered ' + req.params.event);
   } else {
     events[req.params.event](param, ".color");
-    res.send(req.params.event + " eventgered with params: " + req.params.param);
+    res.send(req.params.event + " triggered with params: " + req.params.param);
     devent('Triggered ' + req.params.event + ' with param: ' + req.params.param);
   }
 });
 
-app.get('/reset/:event', function(req, res) {
+app.get('/reset/:event/:param?', function(req, res) {
   var param = req.params.param || "white";
   if(req.params.param == undefined) {
     events["rs"+req.params.event](param, ".color");
-    res.send(req.params.event + " eventgered");
+    res.send(req.params.event + " reset");
     devent('Reset ' + req.params.event);
   } else {
     var param = req.params.param || "red";
     events["rs"+req.params.event](param, ".color");
-    res.send(req.params.event + " eventgered with params: " + req.params.param);
+    res.send(req.params.event + " reset with params: " + req.params.param);
     devent('Reset ' + req.params.event + ' with param: ' + req.params.param);
   }
 });
