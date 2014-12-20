@@ -3,3 +3,7 @@
 The objective of this project is to show how html with a little bit of javascript can dance.
 
 The way the elements will dance is using custom jquery [triggers](https://api.jquery.com/trigger/) when you hit certain urls in another browser.
+
+## Prototype
+
+Here is a link to the prototype hosted on heroku https://dancing-html.herokuapp.com/
