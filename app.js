@@ -19,6 +19,10 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('port', process.env.PORT || 3000);
 
+app.get('/', function(req, res) {
+  res.render('index', { title: "Dancing HTML" });
+});
+
 var events = require('./sockets/events');
 
 app.get('/trigger/:event/:param?', function(req, res) {
