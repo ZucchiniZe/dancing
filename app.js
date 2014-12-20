@@ -5,7 +5,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var dsock = require('debug')('socket');
 var dapp = require('debug')('app');
-var dtrig = require('debug')('trigger');
+var devent = require('debug')('event');
 
 module.exports = io;
 
@@ -29,38 +29,28 @@ app.get('/trigger/:event/:param?', function(req, res) {
   var param = req.params.param || "red";
   if(req.params.param == undefined) {
     events[req.params.event](param, ".color");
-    res.send(req.params.event + " triggered");
-    dtrig('Triggered ' + req.params.event);
+    res.send(req.params.event + " eventgered");
+    devent('Triggered ' + req.params.event);
   } else {
     events[req.params.event](param, ".color");
-    res.send(req.params.event + " triggered with params: " + req.params.param);
-    dtrig('Triggered ' + req.params.event + ' with param: ' + req.params.param);
+    res.send(req.params.event + " eventgered with params: " + req.params.param);
+    devent('Triggered ' + req.params.event + ' with param: ' + req.params.param);
   }
 });
 
 app.get('/reset/:event', function(req, res) {
-  var param = req.params.param || "black";
+  var param = req.params.param || "white";
   if(req.params.param == undefined) {
     events["rs"+req.params.event](param, ".color");
-    res.send(req.params.event + " triggered");
-    dtrig('Reset ' + req.params.event);
+    res.send(req.params.event + " eventgered");
+    devent('Reset ' + req.params.event);
   } else {
     var param = req.params.param || "red";
     events["rs"+req.params.event](param, ".color");
-    res.send(req.params.event + " triggered with params: " + req.params.param);
-    dtrig('Reset ' + req.params.event + ' with param: ' + req.params.param);
+    res.send(req.params.event + " eventgered with params: " + req.params.param);
+    devent('Reset ' + req.params.event + ' with param: ' + req.params.param);
   }
 });
-
-// app.get('/c', function(req, res) {
-//   events.color('red');
-//   res.send('Color changed');
-// });
-//
-// app.get('/rc', function(req, res) {
-//   events.rmcolor('black');
-//   res.send('Color reset');
-// });
 
 // development error handler
 // will print stacktrace
