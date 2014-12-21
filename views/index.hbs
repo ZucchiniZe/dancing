@@ -4,10 +4,14 @@
   <h2>I will change colors.</h2>
 </div>
 
+<h2>Explination</h2>
+<p>Whenever someone visits the /trigger/:event url that triggeres the specific event.
+Also when someone visits the /reset/:event url it resets that event to normal</p>
+
 <script>
   var socket = io(window.location.origin);
   socket.on('change color', function (data) {
-    $("body").trigger('colorChange', [data.selector], data.color])
+    $("body").trigger('colorChange', [data.selector, data.color])
     console.log(data);
   });
   socket.on('change color back', function(data) {
