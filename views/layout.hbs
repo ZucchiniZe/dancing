@@ -2,11 +2,24 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://cdn.smtcs.rocks/jq/2.js"></script>
   </head>
   <body>
     {{{body}}}
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+       var t   = document.createElement('script');
+       t.type  = 'text/javascript';
+       t.async = true;
+       t.id    = 'gauges-tracker';
+       t.setAttribute('data-site-id', '54962178e32bb42c2610db6e');
+       t.src = '//secure.gaug.es/track.js';
+       var s = document.getElementsByTagName('script')[0];
+       s.parentNode.insertBefore(t, s);
+       })();
+    </script>
   </body>
 </html>
